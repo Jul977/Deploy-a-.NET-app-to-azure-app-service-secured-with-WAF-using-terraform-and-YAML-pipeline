@@ -10,10 +10,10 @@ steps:
              provider: 'azurerm'
              command: 'init'
              backendServiceArm: 'JulServicePrincipal'
-             backendAzureRmResourceGroupName: '$(tf-rg-statefile)'
-             backendAzureRmStorageAccountName: '$(jultfstorage)'
-             backendAzureRmContainerName: '$(tfstate)'
-             backendAzureRmKey: '$(app.terraform.tfstate)'
+             backendAzureRmResourceGroupName: '$(rbendrg)'
+             backendAzureRmStorageAccountName: '$(rbend)'
+             backendAzureRmContainerName: '$(rbendcontainer)'
+             backendAzureRmKey: '$(rbendkey)'
 
           - task: TerraformTaskV4@4
             displayName: Terraform_Plan

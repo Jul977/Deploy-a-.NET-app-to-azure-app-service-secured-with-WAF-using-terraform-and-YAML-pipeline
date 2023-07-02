@@ -38,4 +38,4 @@ steps:
               azureSubscription: 'JulServicePrincipal'
               appType: 'webApp'
               WebAppName: 'Jul97app'
-              packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+              packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'

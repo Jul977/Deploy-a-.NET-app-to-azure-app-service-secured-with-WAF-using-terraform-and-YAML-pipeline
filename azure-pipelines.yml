@@ -12,32 +12,32 @@ pool:
 variables:
  rbendrg: "tf-rg-statefile"
  rbend: "jultfstorage"
- rbendcontainer: "tfstate"
+ rbendcontainer: "jultfstate"
  rbendkey: "app.terraform.tfstate"
  solution: '**/*.sln'
  buildPlatform: 'Any CPU'
  buildConfiguration: 'Release'
 
 stages:
-  - stage: Validate the code
+  - stage: ValidateTheCode
     jobs:
       - job: Validate_code
         continueOnError: false
         steps:
           - template: ./tfvalidate-template.yml
                    
-  - stage: Deploy the code
-    condition: succeeded("Validate the code")
-    dependsOn: Validate the code
+  - stage: DeployTheCode
+    condition: succeeded('ValidateTheCode')
+    dependsOn: ValidateTheCode
     jobs:
       - job: Terraform_apply
         steps:
           - template: ./tfdeploy-template.yml
 
-  - stage: Build the app and deploy to AppService
-    condition: succeeded("Deploy the code")
-    dependsOn: Deploy the code
+  - stage: DeployToAppService
+    condition: succeeded('DeployTheCode')
+    dependsOn: DeployTheCode
     jobs:
-      - job: Build the app and deploy to AppService
+      - job: Build_the_app_and_deploy_to_AppService
         steps:
           - template: ./tfbuildcode-template.yml

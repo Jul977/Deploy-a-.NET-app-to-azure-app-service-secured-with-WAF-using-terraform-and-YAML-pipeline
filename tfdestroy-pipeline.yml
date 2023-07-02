@@ -15,7 +15,7 @@ variables:
  rbendkey: "app.terraform.tfstate"
 
 stages:     
-  - stage: Delete the code
+  - stage: DeleteTheCode
     jobs:
       - job: Terraform_destroy
         steps:

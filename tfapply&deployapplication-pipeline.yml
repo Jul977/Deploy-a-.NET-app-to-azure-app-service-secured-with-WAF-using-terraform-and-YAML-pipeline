@@ -1,0 +1,43 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+ rbendrg: "tf-rg-statefile"
+ rbend: "jultfstorage"
+ rbendcontainer: "tfstate"
+ rbendkey: "app.terraform.tfstate"
+ solution: '**/*.sln'
+ buildPlatform: 'Any CPU'
+ buildConfiguration: 'Release'
+
+stages:
+  - stage: Validate the code
+    jobs:
+      - job: Validate_code
+        continueOnError: false
+        steps:
+          - template: ./tfvalidate-template.yml
+                   
+  - stage: Deploy the code
+    condition: succeeded("Validate the code")
+    dependsOn: Validate the code
+    jobs:
+      - job: Terraform_apply
+        steps:
+          - template: ./tfdeploy-template.yml
+
+  - stage: Build the app and deploy to AppService
+    condition: succeeded("Deploy the code")
+    dependsOn: Deploy the code
+    jobs:
+      - job: Build the app and deploy to AppService
+        steps:
+          - template: ./tfbuildcode-template.yml

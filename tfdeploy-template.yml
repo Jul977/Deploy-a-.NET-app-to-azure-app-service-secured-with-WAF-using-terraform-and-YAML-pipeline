@@ -1,0 +1,30 @@
+steps:
+          - task: TerraformInstaller@1
+            displayName: Install_terraform
+            inputs:
+             terraformVersion: 'latest'
+
+          - task: TerraformTaskV4@4
+            displayName: Terraform_init
+            inputs:
+             provider: 'azurerm'
+             command: 'init'
+             backendServiceArm: 'JulServicePrincipal'
+             backendAzureRmResourceGroupName: '$(tf-rg-statefile)'
+             backendAzureRmStorageAccountName: '$(jultfstorage)'
+             backendAzureRmContainerName: '$(tfstate)'
+             backendAzureRmKey: '$(app.terraform.tfstate)'
+
+          - task: TerraformTaskV4@4
+            displayName: Terraform_Plan
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              environmentServiceNameAzureRM: 'JulServicePrincipal'
+              
+          - task: TerraformTaskV4@4
+            displayName: Terraform_apply
+            inputs:
+              provider: 'azurerm'
+              command: 'apply'
+              environmentServiceNameAzureRM: 'JulServicePrincipal'

@@ -32,7 +32,7 @@ stages:
     jobs:
       - job: Terraform_apply
         steps:
-          - template: ./tfdeploy-template.yml
+          - template: ./tfdeploy-appservice-template.yml
 
   - stage: DeployToAppService
     condition: succeeded('DeployTheCode')
@@ -40,4 +40,4 @@ stages:
     jobs:
       - job: Build_the_app_and_deploy_to_AppService
         steps:
-          - template: ./tfbuildcode-template.yml
+          - template: ./tfdeploy-azure-template.yml

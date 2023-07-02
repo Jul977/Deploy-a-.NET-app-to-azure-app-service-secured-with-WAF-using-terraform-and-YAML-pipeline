@@ -1,0 +1,50 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+ rbendrg: "tf-rg-statefile"
+ rbend: "jultfstorage"
+ rbendcontainer: "jultfstate"
+ rbendkey: "app.terraform.tfstate"
+
+stages:     
+  - stage: Delete the code
+    jobs:
+      - job: Terraform_destroy
+        steps:
+          - task: TerraformInstaller@1
+            displayName: Install_terraform
+            inputs:
+             terraformVersion: 'latest'
+
+          - task: TerraformTaskV4@4
+            displayName: Terraform_init
+            inputs:
+             provider: 'azurerm'
+             command: 'init'
+             backendServiceArm: 'JulServicePrincipal'
+             backendAzureRmResourceGroupName: '$(rbendrg)'
+             backendAzureRmStorageAccountName: '$(rbend)'
+             backendAzureRmContainerName: '$(rbendcontainer)'
+             backendAzureRmKey: '$(rbendkey)'
+
+          - task: TerraformTaskV4@4
+            displayName: Terraform_Plan
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              environmentServiceNameAzureRM: 'JulServicePrincipal'
+              
+          - task: TerraformTaskV4@4
+            displayName: Terraform_destroy
+            inputs:
+              provider: 'azurerm'
+              command: 'destroy'
+              environmentServiceNameAzureRM: 'JulServicePrincipal'

@@ -22,4 +22,4 @@ Template files called tfvalidate-template.yml, tfdeploy-azure-template.yml and t
 
 A service principal was created in Azure AD to authenticate between Azure DevOps organization and Azure portal through a service connection.
 
-A YAML pipeline(tfdestroy-pipeline) to destroy to our infrastructure whenever we need to was created.
+A YAML pipeline(tfdestroy-pipeline.yml) to destroy to our infrastructure whenever we need to was created.

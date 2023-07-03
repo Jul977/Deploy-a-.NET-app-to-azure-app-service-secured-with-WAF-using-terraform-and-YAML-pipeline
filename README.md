@@ -15,7 +15,7 @@ Application gateway with WAF enabled provides L7 security for our app service by
  
 YAML pipeline (azure-pipelines.yml) was created for 2 reasons:
 -	Deploy our infrastructure to azure using terraform
--	Implement a build and release for our application then deploy the application to our App service
+-	Implement a build and release for our application then deploy the artifact to our App service
  
 
 Template files called tfvalidate-template.yml, tfdeploy-azure-template.yml and tfdeploy-appservice-template.yml was implemented to improve readability and reusability of our code.

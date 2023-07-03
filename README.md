@@ -18,7 +18,7 @@ YAML pipeline (azure-pipelines.yml) was created for 2 reasons:
 -	Implement a build and release for our application then deploy the application to our App service
  
 
-tfvalidate-template.yml, tfdeploy-azure-template.yml and tfdeploy-appservice-template.yml was implemented to improve readability and reusability of our code.
+Template files called tfvalidate-template.yml, tfdeploy-azure-template.yml and tfdeploy-appservice-template.yml was implemented to improve readability and reusability of our code.
 
 A terraform destroy pipeline was created to destroy our infrastructure whenever we need to.
 

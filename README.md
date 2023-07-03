@@ -1,9 +1,13 @@
 Implementation of a multi stage CI-CD pipeline using YAML and Terraform
 
 Scope: 
+
 A basic ASP.NET web application was created using Visual Studio - Julapp
+
 Terraform was used to provision our infrastructure on azure: App service, Application gateway with Web Application Firewall (WAF) enabled - main.tf, variables.tf
+
 Below document explains the set up between App service and application gateway
+
 Link: https://learn.microsoft.com/en-us/azure/application-gateway/configure-web-app?tabs=defaultdomain%2Cazure-portal
  
 

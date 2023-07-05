@@ -11,6 +11,8 @@ Below document explains the set up between App service and application gateway
 Link: https://learn.microsoft.com/en-us/azure/application-gateway/configure-web-app?tabs=defaultdomain%2Cazure-portal
  
 
+
+
 Application gateway with WAF enabled provides L7 security for our app service by making use of Core Rule Set (CRS) from the Open Web Application Security Project (OWASP).
  
 YAML pipeline (azure-pipelines.yml) was created for 2 reasons:

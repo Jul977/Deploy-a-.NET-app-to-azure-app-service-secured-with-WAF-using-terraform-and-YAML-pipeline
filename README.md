@@ -4,7 +4,7 @@ Scope:
 
 A basic ASP.NET web application was created using Visual Studio - Julapp
 
-Terraform was used to provision our infrastructure on azure: App service, Application gateway with Web Application Firewall (WAF) enabled - main.tf, variables.tf
+Terraform was used to provision our infrastructure on azure: App service, Application gateway with Web Application Firewall (WAF) enabled - main.tf, appservice.tf, appgw&waf.tf, variables.tf
 
 Below document explains the set up between App service and application gateway
 

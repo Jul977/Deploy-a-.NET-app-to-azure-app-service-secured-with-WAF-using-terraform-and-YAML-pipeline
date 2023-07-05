@@ -10,6 +10,7 @@ Below document explains the set up between App service and application gateway
 
 Link: https://learn.microsoft.com/en-us/azure/application-gateway/configure-web-app?tabs=defaultdomain%2Cazure-portal
  
+![app](https://github.com/Jul977/CI-CD-pipeline-with-YAML-Terraform/assets/110497123/b69e5413-10b8-40d2-aa54-0df44aaf5aa4)
 
 
 
@@ -19,6 +20,9 @@ YAML pipeline (azure-pipelines.yml) was created for 2 reasons:
 -	Deploy our infrastructure to azure using terraform
 -	Implement a build and release for our application then deploy the artifact to our App service
  
+![devop](https://github.com/Jul977/CI-CD-pipeline-with-YAML-Terraform/assets/110497123/c03dae19-e3d4-4027-b5d8-6e22283dd7fd)
+
+
 
 Template files called tfvalidate-template.yml, tfdeploy-azure-template.yml and tfdeploy-appservice-template.yml was implemented to improve readability and reusability of our code.
 

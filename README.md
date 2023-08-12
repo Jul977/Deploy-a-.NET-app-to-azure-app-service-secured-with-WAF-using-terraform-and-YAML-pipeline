@@ -1,4 +1,4 @@
-# Implementation of a multi stage CI-CD pipeline using YAML and Terraform
+# Deployment of a .NET app to Azure app service secured with WAF using terraform and YAML pipeline
 
 ## Scope: 
 
